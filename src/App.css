@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+  box-sizing: border-box;
+  font-family: poppins;
+  user-select: none;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body {
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  background: #bcbcbc;
+  text-align: center;
+}
+
+a{
+  color:white;
+  text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(200, 200, 200);
+}
+
+a:active{
+  color:rgb(175, 175, 175);
+}
+
+.App {
+  text-align: center;
+}
+
+/* navbar style */
+
+.main-nav{
+    background-image: url(./assets/nav-bg.jpg) , linear-gradient(#1000004a , #0000003d);
+    transition: all 1s ease 0s;
+    background-size: cover;
+    min-height: 30rem;
+    overflow: hidden;
+    background-position: center;
+    background-blend-mode: multiply;
+  }
+  
+  .nav{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 85px;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .nav ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0px;
+    width: 100%;
+    font-size: 12px;
+    letter-spacing: 1px;
+    list-style: none;
+  }
+  
+  ul.nav-box-l {
+    width: 50%;
+    justify-content: flex-start;
+  }
+  
+  .nav li {
+    display: flex;
+    padding: 1.5%;
+    color: white;
+  }
+  
+  .nav-options a{
+    width: 75px;
+    padding: 10px 2px;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 20px;
+    vertical-align: middle;
+    font-weight: 600;
+    font-family: sans-serif;
+    transition: .2s;
+  }
+  
+  .nav-options a:hover{
+    color: #ff4000;
+    background-color: #00000025;
+    text-shadow: 0 0 25px #ff4000;
+    scale: 1.06;
+  }
+  
+  .nav-options .MuiSvgIcon-root{
+    width: 100%;
+  }
+  
+  .brand-name{
+    position: relative;
+    bottom: -10rem;
+    left: 0rem;
+    color: white;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+    text-align: center;
+    transition: all 1s ease 0s;
+    z-index: 1;
+  }
+  
+  .brand-name span{
+    color: #ff4000;
+    animation: blink-animation-text 2s linear infinite;
+  }
+  
+  .brand-name marquee{
+    font-size: 14px;
+    word-spacing: 10px;
+    letter-spacing: 4px;
+    color: #ffffff9c;
+  }
+  
+  .store {
+    font-size: 1.25rem;
+    text-align: center;
+    font-weight: 100;
+    color: #f5deb342;
+  }
+  
+  @media(max-width: 576px){
+    .nav-options a{
+      width: 62px;
+    }
+  }
+  
+  @media(min-width: 1000px){
+    .nav-box-r{
+      justify-content: flex-end !important;
+    }
+  }
+
+/* footer style */
+
+  footer{
+    position: relative;
+    z-index: 1;
+  }
+  
+  .footer{
+    background: #100000;
+    transition: all 1s ease 0s;
+    background-size: cover;
+    background-position: center;
+    filter: blur(0px);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .contact-us{
+    line-height: 4rem;
+    text-align: left;
+  }
+  
+  .contact-us h1{
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    color: white;
+    padding-left: 12px;
+    margin: 0;
+    font-size: 40px;
+  }
+  
+  .contact-us a{
+    padding: 12px;
+  }
+  
+  .contact-us a .fas{
+    color: #ff004f;
+  }
+  
+  .social-icons{
+    line-height: 3rem;
+  }
+  
+  .social-icons a{
+    text-decoration: none;
+    font-size: 25px;
+    color: #ababab;
+    display: inline-block;
+    transition: 0.5s;
+  }
+  
+  .social-icons a:hover{
+    color: #ff004f;
+    transform: translateY(-5px);
+  }
+  
+  .right-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 40%;
+  }
+  
+  .right-footer form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+    width: 100%;
+  }
+  
+  .footer-name-email{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .footer-name-email input , .right-footer form textarea{
+    background: transparent;
+    color: beige;
+    border: 2px solid #ffffff52;
+    border: none;
+    border-bottom: 2.5px solid #450d2c;
+    border-radius: 5px;
+    border-radius: 0;
+    padding: 10px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  
+  .footer-name-email input{
+    width: 49%;
+  }
+  
+  .right-footer form textarea{
+    height: 100px;
+    width: 100%;
+  }
+  
+  .footer input:focus, .footer textarea:focus {
+    outline:none;
+  }
+  
+  .footer-form-submit{
+    width: 25%;
+    background: #ff004f;
+    color: beige;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding:10px 0;
+  }
+  .copyright p{
+    background: #100000;
+    margin: 0;
+    padding: 10px;
+    color: #45111e;
+    font-weight: 800;
+  }
+  
+  @media(max-width: 576px){
+    .right-footer{
+      display: none;
+    }
+    .left-footer , .contact-us{
+      width: 100%;
+      text-align: center;
+    }
+    .contact{
+      display: flex;
+      justify-content: space-around;
+    }
+    .social-icons {
+      line-height: 0rem;
+    } 
+  }
