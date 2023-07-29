@@ -262,7 +262,7 @@ input[type="checkbox"]:checked + label:before{
     cursor: pointer;
 }
 
-.panels{
+#panels{
     position: fixed;
     top: 0;
     left: 0;
@@ -273,6 +273,14 @@ input[type="checkbox"]:checked + label:before{
     transition: 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     z-index: 1;
     overflow: hidden;
+}
+
+#panels.sign-in-mode{
+    transform: translateX(0%);
+}
+
+#panels.sign-up-mode{
+    transform: translateX(-50%);
 }
 
 .left-panel , .right-panel{
@@ -291,7 +299,7 @@ input[type="checkbox"]:checked + label:before{
         left: 75%;
         top: 5rem;
     }
-    .panels{
+    #panels{
         left: -5rem;
     }
     .left-panel img , .right-panel img{

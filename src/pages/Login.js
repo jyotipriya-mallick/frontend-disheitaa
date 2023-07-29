@@ -6,14 +6,19 @@ import '../styles/Login.css'
 import PersonIcon from '@mui/icons-material/Person'
 import LockIcon from '@mui/icons-material/Lock'
 import VisibilityIcon from '@mui/icons-material/Visibility'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
+import EmailIcon from '@mui/icons-material/Email'
+import CallIcon from '@mui/icons-material/Call'
 import GoogleIcon from '@mui/icons-material/Google'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
+
 function Login() {
-    
-  const [isSigninTab, setIsSigninTab] = useState(true);
+
+    const [isPassVisible, setIsPassVisible] = useState(false);
+    const [isSigninTab, setIsSigninTab] = useState(true);
     
   return (
   <>
@@ -30,8 +35,17 @@ function Login() {
                 </div>
                 <div className="label">
                     <LockIcon />
-                    <input type="password" name="password" className="password "placeholder="password" required />
-                    <VisibilityIcon className='view-pass' />
+                    <input
+                        type={isPassVisible ? "text" : "password"}
+                        name="password"
+                        className="password "
+                        placeholder="password"
+                        required
+                    />
+                    { isPassVisible ?
+                        <VisibilityIcon onClick={ () => setIsPassVisible((prevState) => !prevState) } className='view-pass'/> :
+                        <VisibilityOffIcon onClick={ () => setIsPassVisible((prevState) => !prevState) } className='view-pass'/>
+                    }
                 </div>
                 <div className="message"></div>
                 <div className="label">
@@ -63,15 +77,15 @@ function Login() {
           </div>
           <form className="form-body" action="/signup/" method="post">
             <div className="label">
-                <i className="fas fa-user"></i>
+                <PersonIcon />
                 <input type="text" name="username" placeholder="username" required />
             </div>
             <div className="label">
-                <i className="fas fa-envelope-open"></i>
+                <EmailIcon />
                 <input type="email" name="email" placeholder="email" required />
             </div>
             <div className="label">
-                <i className="fas fa-phone-alt"></i>
+                <CallIcon className='fa-phone-alt' />
                 <select name="phone_0" required id="country-code">
                   <option value="---------">---------</option>
                   <option value="+93">Afghanistan +93</option>
@@ -324,10 +338,18 @@ function Login() {
                 <input type="tel" name="phone" className="phone" placeholder="phone no." pattern="[0-9]{10}" required />
             </div>
             <div className="label">
-                <i className="fas fa-lock"></i>
-                <input type="password" name="password" className="password" placeholder="password" required />
-                <i className="fas fa-eye view-pass"></i>
-
+                <LockIcon />
+                <input
+                    type={isPassVisible ? "text" : "password"}
+                    name="password"
+                    className="password "
+                    placeholder="password"
+                    required
+                />
+                { isPassVisible ?
+                    <VisibilityIcon onClick={ () => setIsPassVisible((prevState) => !prevState) } className='view-pass'/> :
+                    <VisibilityOffIcon onClick={ () => setIsPassVisible((prevState) => !prevState) } className='view-pass'/>
+                }
             </div>
             <button type="submit" className="submit" id="submit" name="submit">Submit</button>
           </form>
@@ -340,7 +362,7 @@ function Login() {
         </div>
     </div>
   </div>
-  <div className="panels">
+  <div className={ isSigninTab ? "sign-in-mode" : "sign-up-mode"} id='panels'>
     <div className="left-panel">
         <img src="https://raw.githubusercontent.com/sefyudem/Sliding-Sign-In-Sign-Up-Form/955c6482aeeb2f0e77c1f3c66354da3bc4d7a72d/img/log.svg" alt="" />
     </div>
