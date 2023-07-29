@@ -9,20 +9,20 @@ import Staff from './pages/Staff.js'
 import Report from './pages/Report.js'
 import Login from './pages/Login.js'
 
-// Custom component for rendering Navbar and Footer conditionally
+
 const NavbarAndFooter = () => {
   const location = useLocation();
-  const isLoginPage = location.pathname === '/Login';
-
+  const isLoginPage = location.pathname === '/login';
   return (
     <>
       {!isLoginPage && <Navbar />}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Staff" element={<Staff />} />
-        <Route path="/Report" element={<Report />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Logout" element={<Login />} />
+        <Route path="/"       element = { <Home  />} />
+        <Route path="/staff"  element = { <Staff />} />
+        <Route path="/report" element = { <Report/>} />
+        <Route path="/login"  element = { <Login />} />
+        <Route path="/signup" element = { <Login />} />
+        <Route path="/logout" element = { <Home  />} />
       </Routes>
       {!isLoginPage && <Footer />}
     </>
@@ -33,7 +33,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* Use the custom component instead of placing the components directly */}
         <NavbarAndFooter />
       </Router>
     </div>

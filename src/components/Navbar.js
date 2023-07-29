@@ -21,17 +21,17 @@ function Navbar() {
                             <Link to="/"> <HomeIcon /> Home</Link>
                         </li>
                         <li className='nav-options'>
-                            <Link to="/Staff"> <SupervisorAccountIcon /> Staff</Link>
+                            <Link to="/staff"> <SupervisorAccountIcon /> Staff</Link>
                         </li>
                         <li className='nav-options'>
-                            <Link to="/Report"> <PestControlIcon /> Report</Link>
+                            <Link to="/report"> <PestControlIcon /> Report</Link>
                         </li>
                         {isLoggedIn ? 
                             <li className='nav-options' onClick={setIsLoggedIn}>
-                                <Link to="/Logout"> <LogoutIcon /> Logout</Link>
+                                <Link to="/logout"> <LogoutIcon /> Logout</Link>
                             </li> :
                             <li className='nav-options' onClick={setIsLoggedIn}>
-                                <Link to="/Login"> <LoginIcon /> Login</Link>
+                                <Link to="/login"> <LoginIcon /> Login</Link>
                             </li>
                         }
                     </ul>

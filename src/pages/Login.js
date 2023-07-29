@@ -28,17 +28,26 @@ function Login() {
             <div className="form-header">
                 <h1>Sign In</h1>
             </div>
-            <form className="form-body" action="" method="post">
+            <form className="form-body" >
                 <div className="label">
                     <PersonIcon />
-                    <input type="text" name="username" placeholder="username" required />
+                    <input
+                        type="text"
+                        name="username"
+                        // value={formData.username}
+                        // onChange={handleChange}
+                        placeholder="username"
+                        required
+                    />
                 </div>
                 <div className="label">
                     <LockIcon />
                     <input
                         type={isPassVisible ? "text" : "password"}
                         name="password"
-                        className="password "
+                        className="password"
+                        // value={formData.password}
+                        // onChange={handleChange}
                         placeholder="password"
                         required
                     />
@@ -75,10 +84,17 @@ function Login() {
           <div className="form-header">
             <h1>Sign Up</h1>
           </div>
-          <form className="form-body" action="/signup/" method="post">
+          <form className="form-body" >
             <div className="label">
                 <PersonIcon />
-                <input type="text" name="username" placeholder="username" required />
+                <input
+                    type="text"
+                    name="username"
+                    // value={formData.username}
+                    // onChange={handleChange}
+                    placeholder="username"
+                    required
+                />
             </div>
             <div className="label">
                 <EmailIcon />
@@ -342,7 +358,9 @@ function Login() {
                 <input
                     type={isPassVisible ? "text" : "password"}
                     name="password"
-                    className="password "
+                    className="password"
+                    // value={formData.password}
+                    // onChange={handleChange}
                     placeholder="password"
                     required
                 />
