@@ -223,8 +223,11 @@ input[type="checkbox"]:checked + label:before{
     display: inline-block;
     padding: 5px;
     color: black;
-    font-size: 16px;
     transition: 0.3s;
+}
+
+.social-media svg{
+    font-size: 18px;
 }
 
 .social-media a:hover{

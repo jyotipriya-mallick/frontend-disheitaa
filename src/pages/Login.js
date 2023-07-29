@@ -6,6 +6,10 @@ import '../styles/Login.css'
 import PersonIcon from '@mui/icons-material/Person'
 import LockIcon from '@mui/icons-material/Lock'
 import VisibilityIcon from '@mui/icons-material/Visibility'
+import GoogleIcon from '@mui/icons-material/Google'
+import FacebookIcon from '@mui/icons-material/Facebook'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 function Login() {
 
@@ -72,10 +76,10 @@ function Login() {
             </form>
             <div className="form-footer">
                 <div className="social-media">
-                    <Link to=""><i className="fab fa-google"></i></Link>
-                    <Link to=""><i className="fab fa-twitter"></i></Link>
-                    <Link to=""><i className="fab fa-facebook"></i></Link>
-                    <Link to=""><i className="fab fa-linkedin"></i></Link>
+                    <Link to=""> <GoogleIcon /> </Link>
+                    <Link to=""> <FacebookIcon /> </Link>
+                    <Link to=""> <TwitterIcon /> </Link>
+                    <Link to=""> <LinkedInIcon /> </Link>
                 </div>
                 <div className="signIn-signUp-handler">
                     <p>Click here to continue...</p>
