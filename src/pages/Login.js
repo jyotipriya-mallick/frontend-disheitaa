@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState}  from 'react'
 import { Link } from 'react-router-dom'
 
 import '../styles/Login.css'
@@ -12,45 +12,14 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 function Login() {
-
-  const signUp_tab = document.getElementById("sub-container");
-  const signIn = () => {
-      signUp_tab.style.transform = "translate(0%)";
-      document.querySelector('.panels').style.transform = "translateX(0%)";
-      document.querySelector('body').classList.add('signin-mode');
-      document.querySelector('body').classList.remove('signup-mode');
-  }
-  const signUp = () => {
-      signUp_tab.style.transform = "translate(-50%)";
-      document.querySelector('.panels').style.transform = "translateX(-50%)";
-      document.querySelector('body').clasList.add('signup-mode');
-      document.querySelector('body').classList.remove('signin-mode');
-  }
-
-
-  // var password
-  // document.querySelectorAll('.view-pass').forEach(btn => {
-  //   btn.addEventListener('click' , (e) => {
-  //     password = e.target
-  //     password = password.parentElement.querySelector('.password')
-  //     if (password.type === 'password'){
-  //       password.setAttribute('type','text')
-  //       e.target.classList.add('fa-eye-slash')
-  //       e.target.classList.remove('fa-eye')
-  //     }
-  //     else{
-  //       password.setAttribute('type','password')
-  //       e.target.classList.add('fa-eye')
-  //       e.target.classList.remove('fa-eye-slash')
-  //     }
-  //   })
-  // })
-
+    
+  const [isSigninTab, setIsSigninTab] = useState(true);
+    
   return (
   <>
     <div className="main-container">
-    <div className="sub-container" id="sub-container">
-        <div className="sign-in">
+    <div className={ isSigninTab ? "sign-in-mode" : "sign-up-mode"}  id="sub-container">
+        <div className= "sign-in">
             <div className="form-header">
                 <h1>Sign In</h1>
             </div>
@@ -83,12 +52,12 @@ function Login() {
                 </div>
                 <div className="signIn-signUp-handler">
                     <p>Click here to continue...</p>
-                    <button className="signUp-btn" onclick={signUp}>SignUp</button>
+                    <button className="signUp-btn" onClick={ () => setIsSigninTab(false)}>SignUp</button>
                 </div>
             </div>
         </div>
 
-        <div className="sign-up">
+        <div className= "sign-up">
           <div className="form-header">
             <h1>Sign Up</h1>
           </div>
@@ -365,7 +334,7 @@ function Login() {
           <div className="form-footer">
             <div className="signIn-signUp-handler">
                 <p>Already have an account ?</p>
-                <button className="signIn-btn" onclick={signIn}>SignIn</button>
+                <button className="signIn-btn" onClick={ () => setIsSigninTab(true)}>SignIn</button>
             </div>
           </div>
         </div>

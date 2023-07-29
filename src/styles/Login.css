@@ -20,12 +20,20 @@
     z-index: 2;
 }
 
-.sub-container{
+#sub-container{
     display: flex;
     width: 200%;
     text-align: center;
     border-radius: 0 0 15px 15px;
     transition: 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+#sub-container.sign-in-mode{
+    transform: translateX(0%);
+}
+
+#sub-container.sign-up-mode{
+    transform: translateX(-50%);
 }
 
 .sign-in , .sign-up{
