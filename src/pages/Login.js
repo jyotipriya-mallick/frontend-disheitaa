@@ -1,5 +1,5 @@
 import React , { useState , useEffect }  from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 import '../styles/Login.css'
@@ -17,7 +17,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 
 function Login({setIsLoggedIn}) {
-
+    
+    const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
     const [isPassVisible, setIsPassVisible] = useState(false);
     const [isSigninTab, setIsSigninTab] = useState(true);
@@ -48,7 +49,8 @@ function Login({setIsLoggedIn}) {
             if (response.status === 200) {
                 console.log(response.data.message);
                 setIsLoggedIn(true);
-                window.location.href = '/';
+                // window.location.href = '/';
+                navigate('/');
             }
 
             // const authToken = response.data.token;

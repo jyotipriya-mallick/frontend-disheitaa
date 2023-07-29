@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import HomeIcon from '@mui/icons-material/Home'
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
@@ -7,8 +7,13 @@ import PestControlIcon from '@mui/icons-material/PestControl'
 import LoginIcon from '@mui/icons-material/Login'
 import LogoutIcon from '@mui/icons-material/Logout'
 
-function Navbar({isLoggedIn, setIsLoggedIn}) {
-    console.log({isLoggedIn});
+function Navbar({ isLoggedIn, setIsLoggedIn }) {
+    
+    const navigate = useNavigate();
+    function handleLogout() {
+        // window.location.href = '/';
+        navigate('/');
+    }
     return (
         <div>
             <nav className='main-nav'>
@@ -24,8 +29,12 @@ function Navbar({isLoggedIn, setIsLoggedIn}) {
                             <Link to="/report"> <PestControlIcon /> Report</Link>
                         </li>
                         {isLoggedIn ?
-                            <li className='nav-options' onClick={ ()=> setIsLoggedIn(false) }>
-                                <Link to="/logout"> <LogoutIcon /> Logout</Link>
+                            <li className='nav-options'
+                                onClick={ () => {
+                                    setIsLoggedIn(false);
+                                    handleLogout();
+                                }}>
+                                <Link to="/logout"> <LogoutIcon />Logout</Link>
                             </li> :
                             <li className='nav-options'>
                                 <Link to="/login"> <LoginIcon /> Login</Link>

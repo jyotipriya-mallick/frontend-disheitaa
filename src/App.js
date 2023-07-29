@@ -32,6 +32,7 @@ const NavbarAndFooter = ({ isLoggedIn, setIsLoggedIn }) => {
 };
 
 function App() {
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -48,7 +49,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <NavbarAndFooter isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+        <NavbarAndFooter isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       </Router>
     </div>
   );
