@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom'
 
 import '../styles/Login.css'
 
+import PersonIcon from '@mui/icons-material/Person'
+import LockIcon from '@mui/icons-material/Lock'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+
 function Login() {
 
   const signUp_tab = document.getElementById("sub-container");
@@ -48,13 +52,13 @@ function Login() {
             </div>
             <form className="form-body" action="" method="post">
                 <div className="label">
-                    <i className="fas fa-user"></i>
+                    <PersonIcon />
                     <input type="text" name="username" placeholder="username" required />
                 </div>
                 <div className="label">
-                    <i className="fas fa-lock"></i>
+                    <LockIcon />
                     <input type="password" name="password" className="password "placeholder="password" required />
-                    <i className="fas fa-eye view-pass"></i>
+                    <VisibilityIcon className='view-pass' />
                 </div>
                 <div className="message"></div>
                 <div className="label">

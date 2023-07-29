@@ -69,10 +69,10 @@
   margin-bottom: 10px;
 }
 
-.label i{
+.label svg{
   position: absolute;
   transform: translate(19px, 19px);
-  font-size: 12px;
+  font-size: 14px;
   pointer-events: none;
   color: rgb(150, 150, 150);
 }
@@ -278,6 +278,10 @@ input[type="checkbox"]:checked + label:before{
 @media(min-width: 640px){
     .main-container{
         left: 75%;
+        top: 5rem;
+    }
+    .panels{
+        left: -5rem;
     }
     .left-panel img , .right-panel img{
         width: 50%;
