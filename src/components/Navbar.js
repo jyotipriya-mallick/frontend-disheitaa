@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import HomeIcon from '@mui/icons-material/Home'
@@ -7,12 +7,8 @@ import PestControlIcon from '@mui/icons-material/PestControl'
 import LoginIcon from '@mui/icons-material/Login'
 import LogoutIcon from '@mui/icons-material/Logout'
 
-function Navbar() {
-    var isLoggedIn = false;
-    var setIsLoggedIn = () => {
-        isLoggedIn = !isLoggedIn;
-        console.log(isLoggedIn);
-    }
+function Navbar({isLoggedIn, setIsLoggedIn}) {
+    console.log({isLoggedIn});
     return (
         <div>
             <nav className='main-nav'>
@@ -27,11 +23,11 @@ function Navbar() {
                         <li className='nav-options'>
                             <Link to="/report"> <PestControlIcon /> Report</Link>
                         </li>
-                        {isLoggedIn ? 
-                            <li className='nav-options' onClick={setIsLoggedIn}>
+                        {isLoggedIn ?
+                            <li className='nav-options' onClick={ ()=> setIsLoggedIn(false) }>
                                 <Link to="/logout"> <LogoutIcon /> Logout</Link>
                             </li> :
-                            <li className='nav-options' onClick={setIsLoggedIn}>
+                            <li className='nav-options'>
                                 <Link to="/login"> <LoginIcon /> Login</Link>
                             </li>
                         }

@@ -1,4 +1,4 @@
-import React , {useState}  from 'react'
+import React , { useState , useEffect }  from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -16,36 +16,54 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 
-function Login() {
+function Login({setIsLoggedIn}) {
 
+    const [errorMessage, setErrorMessage] = useState('');
     const [isPassVisible, setIsPassVisible] = useState(false);
     const [isSigninTab, setIsSigninTab] = useState(true);
-    
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+    });
+    
+    useEffect(() => {
+        const csrftoken = getCookie('csrftoken');
+        axios.defaults.headers.post['X-CSRFToken'] = csrftoken;
+    }, []);
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post('/login/', formData);
-          // Assuming the backend returns an authentication token upon successful login
-          const authToken = response.data.token;
-          // Store the authentication token in browser storage (localStorage or sessionStorage)
-          localStorage.setItem('authToken', authToken);
-          // Redirect the user to a protected route
-          // Replace '/dashboard' with the route you want to redirect the user to after login
-          window.location.href = '/dashboard';
-        } catch (error) {
-          console.error('Login failed:', error);
+            const params = new URLSearchParams(formData);
+            const response = await axios.post('/login/', params);
+
+            console.log("\n", response, "\n");
+            
+            if (response.status === 200) {
+                console.log(response.data.message);
+                setIsLoggedIn(true);
+                window.location.href = '/';
+            }
+
+            // const authToken = response.data.token;
+            // localStorage.setItem('authToken', authToken);
+
+        } catch (e) {
+            console.log(e.response.data.message);
+            setErrorMessage(e.response.data.message);
         }
     };
+
+    function getCookie(name) {
+        const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+        return cookieValue ? cookieValue.pop() : '';
+    }
 
     return (
     <>
@@ -83,7 +101,9 @@ function Login() {
                             <VisibilityOffIcon onClick={ () => setIsPassVisible((prevState) => !prevState) } className='view-pass'/>
                         }
                     </div>
-                    <div className="message"></div>
+                    <div className="message">
+                        {errorMessage}  
+                    </div>
                     <div className="label">
                         <div className="checkbox">
                             <input type="checkbox" id="checkbox" checked />
@@ -91,7 +111,7 @@ function Login() {
                         </div>
                         <a href="/forget">Forgot password ?</a>
                     </div>
-                    <button type="submit" className="submit" id="submit">Submit</button>
+                    <button type="submit" className="submit">Submit</button>
                 </form>
                 <div className="form-footer">
                     <div className="social-media">
@@ -396,7 +416,7 @@ function Login() {
                         <VisibilityOffIcon onClick={ () => setIsPassVisible((prevState) => !prevState) } className='view-pass'/>
                     }
                 </div>
-                <button type="submit" className="submit" id="submit" name="submit">Submit</button>
+                <button type="submit" className="submit" name="submit">Submit</button>
                 </form>
                 <div className="form-footer">
                 <div className="signIn-signUp-handler">

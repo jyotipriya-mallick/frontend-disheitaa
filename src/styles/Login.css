@@ -169,7 +169,12 @@ input[type="checkbox"]:checked + label:before{
 }
 
 .message{
+    display: inline-block;
+    width: 100%;
     color: #c21132;
+    font-size: 12px;
+    font-family: monospace;
+    padding: 10px 0;
 }
 
 .form-body-footer{
