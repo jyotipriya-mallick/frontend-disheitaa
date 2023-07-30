@@ -1,6 +1,7 @@
 import React , { useState , useEffect }  from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { getCookie } from '../cookieUtils'
 
 import '../styles/Login.css'
 
@@ -16,7 +17,11 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 
-function Login({setIsLoggedIn}) {
+function Login({
+                    setIsLoggedIn,
+                    setUserName
+                })
+{
     
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
@@ -49,8 +54,9 @@ function Login({setIsLoggedIn}) {
             if (response.status === 200) {
                 console.log(response.data.message);
                 setIsLoggedIn(true);
-                // window.location.href = '/';
+                setUserName(response.data.user.username);
                 navigate('/');
+                // window.location.href = '/';
             }
 
             // const authToken = response.data.token;
@@ -61,11 +67,6 @@ function Login({setIsLoggedIn}) {
             setErrorMessage(e.response.data.message);
         }
     };
-
-    function getCookie(name) {
-        const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
-        return cookieValue ? cookieValue.pop() : '';
-    }
 
     return (
     <>
@@ -84,6 +85,7 @@ function Login({setIsLoggedIn}) {
                             value={ formData.username }
                             onChange={ handleChange }
                             placeholder="username"
+                            maxLength={15}
                             required
                         />
                     </div>
@@ -96,6 +98,7 @@ function Login({setIsLoggedIn}) {
                             value={ formData.password }
                             onChange={ handleChange }
                             placeholder="password"
+                            minLength={6}
                             required
                         />
                         { isPassVisible ?
