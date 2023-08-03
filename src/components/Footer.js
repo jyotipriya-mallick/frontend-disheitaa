@@ -1,8 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-import MapContainer from '../Map'
-
 import EmailIcon from '@mui/icons-material/Email'
 import CallIcon from '@mui/icons-material/Call'
 import YouTubeIcon from '@mui/icons-material/YouTube' 
@@ -41,7 +39,6 @@ function Footer() {
         </div>
       </div>
       <div className="copyright">
-        <MapContainer />
         <p>copyright @ nxtBrothers</p>
       </div>
     </footer>
